@@ -1,5 +1,5 @@
 # PhaseStim2022_Yu
-Real-time phase detection and phase-specific stimulation system. For more introduction of the project, see its [project page](https://jhanliufu.github.io/projects/closed_loop_control.html) on Jhan's website.
+Real-time phase detection and phase-specific stimulation system. We have a [python package](https://github.com/JhanLiufu/PhaseStimAnalysis2022_Yu/tree/master?tab=readme-ov-file) for analyzing stimulation outcome. For more introduction of the project, see its [project page](https://jhanliufu.github.io/projects/closed_loop_control.html) on Jhan's website.
 
 ## Installation
 Clone or download this repository, ```cd``` into the repository and run ```pip install .```
