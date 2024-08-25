@@ -3,3 +3,4 @@ Real-time phase detection and phase-specific stimulation system. For more introd
 
 - **[trodes_connection.py](trodes_connection.py)** contains functions to interface with the [Trodes](https://spikegadgets.com/) system. We stream local field potential (LFP) signal from Trodes and issue stimulation command to Trodes.
 - **[echt.py](echt.py)** implements the endpoint-corrected Hilbert transform (ecHT), originally proposed by [Schreglmann et.al](https://www.nature.com/articles/s41467-020-20581-7). ecHT is a phase estimation algorithm that tracks the current oscillatory phase of an ongoing oscillatory signal.
+- **[detector.py](detector.py)** defines the **Detector** object. A detector iteratively streams LFP from Trodes, estimates the current phase using echt, and issues a stimulation command to Trodes when the current estimated phase reaches the specified target phase.
