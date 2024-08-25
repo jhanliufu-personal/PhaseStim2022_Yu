@@ -1,0 +1,32 @@
+{
+    "server_address": "tcp://127.0.0.1:49152",
+    "data_buffer_size": 1500,
+    "target_channel": 0,
+    "detector_params": 
+    {
+        "detector_1": 
+        {
+            "target_lowcut": 6,
+            "target_highcut": 9,
+            "window_size": 125,
+            "target_phase": 3.141,
+            "statescript_fxn_num": 1
+        },
+        "detector_2": 
+        {
+            "target_lowcut": 6,
+            "target_highcut": 9,
+            "window_size": 125,
+            "target_phase": 3.141,
+            "statescript_fxn_num": 2
+        },
+        "detector_3": 
+        {
+            "target_lowcut": 6,
+            "target_highcut": 9,
+            "window_size": 125,
+            "target_phase": 3.141,
+            "statescript_fxn_num": 3
+        }
+    }
+}
