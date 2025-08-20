@@ -43,5 +43,5 @@ experiment and directly influence phase detection performance.
 
 | Parameter | Description |
 |-----------|-------------|
-| ```target_lowcut```, ```target_highcut``` | Define your frequency band of interest |
+| ```target_lowcut```, ```target_highcut``` | Define your frequency band of interest. Common neural oscillations are $\theta$ band (6-9 Hz), $\alpha$ band (8-12 Hz), $\gamma$ band (15-22 Hz) etc. |
 | ```filter_type``` | Typed of filter used to filter the raw signal. Currently support Butterworth (```butter```), Chebyshev Type I (```cheby1```) and Elliptic (```ellip```) filter. We recommend ```butter``` |
