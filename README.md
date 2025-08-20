@@ -28,6 +28,18 @@ Launch the real-time phase detection and stimulation system:
 python ControlCode.py --params config/[your-config-file].json
 ```
 
+## System Configuration
+Create a ```json``` file in ```config/``` to specify the parameters for phase detection and stimulation. These parameters define your 
+experiment and directly influence phase detection performance. 
+
+| Parameter | Description |
+|-----------|-------------|
+| ```target_lowcut```, ```target_highcut``` | Define your frequency band of interest. Common neural oscillations are $\theta$ band ($6-9$ Hz), $\alpha$ band ($8-12$ Hz), $\gamma$ band ($15-22$ Hz) etc. |
+| ```filter_type``` | Typed of FIR filter used to filter the raw signal. Currently support Butterworth (```butter```), Chebyshev Type I (```cheby1```) and Elliptic (```ellip```) filter. We recommend ```butter```. |
+| ```fltr_order``` | Order of the FIR filter. We recommend $1$ or $2$. Neural oscillations are usually close to each other on the frequency spectrum, a permissive filter would let in nearby frequency components. | 
+| ```window_size``` | Number of past data samples used for phase estimation in each iteration. Set it to match one cycle of your oscillation. This parameter affects performance significantly when ```ecHT``` or ```HT``` is used. | 
+| ```target_phase``` | The oscillatory phase where you want the stimulation to happen. In a non-ideal world with lag, shift this slightly ahead of your true target phase to offset the lag. |
+
 ## Codebase Structure
 - **[trodes_connection.py](trodes_connection.py)** contains functions to interface with the [Trodes](https://spikegadgets.com/) system. We stream local field potential (LFP) signal from Trodes and issue stimulation command to Trodes.
 - **[phase_estimators.py](phase_estimators.py)** implements multiple phase estimation methods:
@@ -36,12 +48,3 @@ python ControlCode.py --params config/[your-config-file].json
   - **PMEstimator**: phase mapping method for real-time phase tracking
 - **[detector.py](detector.py)** defines the **Detector** object with modular phase estimation support. A detector iteratively streams LFP from Trodes, estimates the current phase using the selected method (ecHT, HT, or PM), and issues stimulation commands when the estimated phase reaches the target phase.
 - **[ControlCode.py](ControlCode.py)** establishes connection with Trodes and starts the detectors. Leveraging [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) in python, the system can run an arbitrary number of detectors, each having their own parameters and output to separate Trodes digital outputs. The detector parameters are specified in JSON configuration files in [config](config).
-
-## System Configuration
-Create a ```json``` file in ```config/``` to specify the parameters for phase detection and stimulation. These parameters define your 
-experiment and directly influence phase detection performance. 
-
-| Parameter | Description |
-|-----------|-------------|
-| ```target_lowcut```, ```target_highcut``` | Define your frequency band of interest. Common neural oscillations are $\theta$ band (6-9 Hz), $\alpha$ band (8-12 Hz), $\gamma$ band (15-22 Hz) etc. |
-| ```filter_type``` | Typed of filter used to filter the raw signal. Currently support Butterworth (```butter```), Chebyshev Type I (```cheby1```) and Elliptic (```ellip```) filter. We recommend ```butter``` |
