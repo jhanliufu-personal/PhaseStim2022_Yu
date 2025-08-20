@@ -36,3 +36,12 @@ python ControlCode.py --params config/[your-config-file].json
   - **PMEstimator**: phase mapping method for real-time phase tracking
 - **[detector.py](detector.py)** defines the **Detector** object with modular phase estimation support. A detector iteratively streams LFP from Trodes, estimates the current phase using the selected method (ecHT, HT, or PM), and issues stimulation commands when the estimated phase reaches the target phase.
 - **[ControlCode.py](ControlCode.py)** establishes connection with Trodes and starts the detectors. Leveraging [multiprocessing](https://docs.python.org/3/library/multiprocessing.html) in python, the system can run an arbitrary number of detectors, each having their own parameters and output to separate Trodes digital outputs. The detector parameters are specified in JSON configuration files in [config](config).
+
+## System Configuration
+Create a ```json``` file in ```config/``` to specify the parameters for phase detection and stimulation. These parameters define your 
+experiment and directly influence phase detection performance. 
+
+| Parameter | Description |
+|-----------|-------------|
+| ```target_lowcut```, ```target_highcut``` | Define your frequency band of interest |
+| ```filter_type``` | Typed of filter used to filter the raw signal. Currently support Butterworth (```butter```), Chebyshev Type I (```cheby1```) and Elliptic (```ellip```) filter. We recommend ```butter``` |
