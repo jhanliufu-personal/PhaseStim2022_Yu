@@ -17,16 +17,17 @@ def detection_task(
     shared_data_buffer, 
     trodes_hardware
     ):
-    # Create detector
+    # Extract required parameter without modifying original dict
+    statescript_fxn_num = detector_param['statescript_fxn_num']
+    detector_kwargs = {k: v for k, v in detector_param.items() if k != 'statescript_fxn_num'}
+    
+    # Create detector with all parameters
     detector = Detector(
         detector_name,
         shared_data_buffer,
-        detector_param['statescript_fxn_num'],
+        statescript_fxn_num,
         trodes_hardware,
-        window_size = detector_param['window_size'],
-        target_lowcut = detector_param['target_lowcut'],
-        target_highcut = detector_param['target_highcut'],
-        target_phase = detector_param['target_phase']
+        **detector_kwargs
     )
     detection_thread = threading.Thread(target=detector.closed_loop_stim)
     detection_thread.start()

@@ -1,0 +1,53 @@
+{
+    "server_address": "tcp://127.0.0.1:49152",
+    "data_buffer_size": 1500,
+    "target_channel": 0,
+    "detector_params": 
+    {
+        "detector_echt": 
+        {
+            "statescript_fxn_num": 1,
+            "method": "ecHT",
+            "window_size": 125,
+            "target_phase": 3.141,
+            "target_lowcut": 6,
+            "target_highcut": 9,
+            "fs_filter": 1500,
+            "fltr_order": 2,
+            "filter_type": "butter"
+        },
+        "detector_ht": 
+        {
+            "statescript_fxn_num": 2,
+            "method": "HT",
+            "window_size": 125,
+            "target_phase": 3.141,
+            "target_lowcut": 8,
+            "target_highcut": 12,
+            "fs_filter": 1500,
+            "fltr_order": 2,
+            "filter_type": "butter"
+        },
+        "detector_pm": 
+        {
+            "statescript_fxn_num": 3,
+            "method": "PM",
+            "window_size": 400,
+            "target_phase": 3.141,
+            "target_lowcut": 6,
+            "target_highcut": 9,
+            "fs_filter": 1500,
+            "fltr_order": 2,
+            "filter_type": "butter",
+            "regr_buffer_size": 50,
+            "num_to_wait": 10,
+            "derv_bar": 0.01,
+            "default_slope": 0.012,
+            "gradient_factor": 1,
+            "reset_on": false,
+            "reset_threshold": 250,
+            "lock_on": false,
+            "lockdown": 50
+        }
+    }
+}
