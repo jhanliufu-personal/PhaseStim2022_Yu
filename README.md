@@ -1,5 +1,5 @@
 # PhaseStim2022_Yu
-Real-time phase detection and phase-specific stimulation system. We have a [python package](https://github.com/JhanLiufu/PhaseStimAnalysis2022_Yu/tree/master?tab=readme-ov-file) for analyzing stimulation outcome. For more introduction of the project, see its [project page](https://jhanliufu.github.io/projects/closed_loop_control.html) on Jhan's website.
+Real-time phase detection and phase-specific stimulation system. We have a [python package](https://github.com/JhanLiufu/PhaseStimAnalysis2022_Yu/tree/master?tab=readme-ov-file) for analyzing algorithm performance using various metrics. We analyzed algorithm performance and signal features, identified key parameters and formed optimization strategies. We report our findings in the [CLC](https://www.biorxiv.org/content/10.1101/2024.08.24.609522v1.full.pdf) paper (under review at Journal of Neural Engineering). Visit its [project page](https://jhanliufu.github.io/projects/closed_loop_control.html) on Jhan's website to see the neuroscience motivation.
 
 ## Quickstart
 
@@ -7,7 +7,7 @@ Real-time phase detection and phase-specific stimulation system. We have a [pyth
 
 **Option 1: Using pip and requirements.txt**
 ```bash
-git clone [repository-url]
+git clone git@github.com:jhanliufu-personal/PhaseStim2022_Yu.git
 cd PhaseStim2022_Yu
 pip install -r requirements.txt
 pip install .
@@ -15,17 +15,10 @@ pip install .
 
 **Option 2: Using conda environment**
 ```bash
-git clone [repository-url]
+git clone git@github.com:jhanliufu-personal/PhaseStim2022_Yu.git
 cd PhaseStim2022_Yu
 conda env create -f environment.yml
 conda activate phasestim2022
-pip install .
-```
-
-**Option 3: Direct pip install**
-```bash
-git clone [repository-url]
-cd PhaseStim2022_Yu
 pip install .
 ```
 
@@ -35,7 +28,7 @@ Launch the real-time phase detection and stimulation system:
 python ControlCode.py --params config/[your-config-file].json
 ```
 
-## Files 
+## Codebase Structure
 - **[trodes_connection.py](trodes_connection.py)** contains functions to interface with the [Trodes](https://spikegadgets.com/) system. We stream local field potential (LFP) signal from Trodes and issue stimulation command to Trodes.
 - **[phase_estimators.py](phase_estimators.py)** implements multiple phase estimation methods:
   - **ECHTEstimator**: endpoint-corrected Hilbert transform (ecHT), originally proposed by [Schreglmann et.al](https://www.nature.com/articles/s41467-020-20581-7)
